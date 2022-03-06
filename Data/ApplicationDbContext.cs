@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Product> Products {get; set;}
     public DbSet<Promotion> Promotions {get; set;}
     public DbSet<Stock> Stocks {get; set;}
+    public DbSet<Output> Outputs {get; set;}
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
