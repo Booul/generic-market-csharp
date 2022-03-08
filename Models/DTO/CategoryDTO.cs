@@ -6,10 +6,10 @@ namespace generic_market_csharp.Models.DTO
     {
         [Required]
         public int Id {get; set;}
-        
-        [Required(ErrorMessage = "Nome da categoria é obrigatória.)")]
-        [StringLength(100, ErrorMessage = "Nome de categoria muito grande.")]
-        [MinLength(2, ErrorMessage = "Nome de categoria muito pequeno.")]
+
+        [Required(ErrorMessage = "Nome da categoria é obrigatória.")]
+        [StringLength(100, ErrorMessage = "Nome da categoria é muito grande.")]
+        [MinLength(2, ErrorMessage = "Nome da categoria é muito pequeno.")]
         public string Name {get; set;}
     }
 }
