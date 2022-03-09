@@ -17,7 +17,7 @@ namespace generic_market_csharp.Models.DTO
         public string Email {get; set;}
 
         [Required(ErrorMessage = "Telefone do fornecedor é obrigatório.")]
-        [EmailAddress(ErrorMessage = "Telefone inválido.")]
+        [Phone(ErrorMessage = "Telefone inválido.")]
         public string Phone {get; set;}
     }
 }
