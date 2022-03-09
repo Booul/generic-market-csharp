@@ -15,5 +15,13 @@ namespace generic_market_csharp.Controllers
         public IActionResult NewCategory() {
             return View();
         }
+
+        public IActionResult Suppliers(){
+            return View();
+        }
+
+        public IActionResult NewSupplier() {
+            return View();
+        }
     }
 }
