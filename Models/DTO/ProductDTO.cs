@@ -25,7 +25,7 @@ namespace generic_market_csharp.Models.DTO
         public float SalePrice {get; set;}
 
         [Required(ErrorMessage = "Tipo de medição do produto é obrigatório.")]
-        [Range(0, 2, ErrorMessage = "Tipo de medição inválida.")]
+        [Range(1, 3, ErrorMessage = "Tipo de medição inválida.")]
         public int MeasurementType {get; set;}
     }
 }
