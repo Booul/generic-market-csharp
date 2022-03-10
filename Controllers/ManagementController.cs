@@ -1,4 +1,5 @@
 using generic_market_csharp.Data;
+using generic_market_csharp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace generic_market_csharp.Controllers
@@ -16,7 +17,9 @@ namespace generic_market_csharp.Controllers
         }
 
         public IActionResult Categories(){
-            return View();
+            List<Category> categories = database.Categories.ToList();
+
+            return View(categories);
         }
 
         public IActionResult NewCategory() {
