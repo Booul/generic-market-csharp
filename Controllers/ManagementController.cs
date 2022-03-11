@@ -1,5 +1,6 @@
 using generic_market_csharp.Data;
 using generic_market_csharp.Models;
+using generic_market_csharp.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace generic_market_csharp.Controllers
@@ -24,6 +25,16 @@ namespace generic_market_csharp.Controllers
 
         public IActionResult NewCategory() {
             return View();
+        }
+
+        public IActionResult EditCategory(int id) {
+            Category category = database.Categories.First(category => category.Id == id);
+
+            CategoryDTO categoryDTO = new CategoryDTO();
+            categoryDTO.Id = category.Id;
+            categoryDTO.Name = category.Name;
+
+            return View(categoryDTO);
         }
 
         public IActionResult Suppliers(){
