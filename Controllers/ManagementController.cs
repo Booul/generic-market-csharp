@@ -18,7 +18,9 @@ namespace generic_market_csharp.Controllers
         }
 
         public IActionResult Categories(){
-            List<Category> categories = database.Categories.ToList();
+            List<Category> categories = database.Categories
+                .Where(category => category.Status)
+                .ToList();
 
             return View(categories);
         }
