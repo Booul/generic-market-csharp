@@ -32,13 +32,16 @@
                 <td>@category.Id</td>
                 <td>@category.Name</td>
                 <td>
-                    <button class="btn btn-danger">Deletar</button>
                     <a
                         class="btn btn-primary"
                         href="/Management/EditCategory/@category.Id"
                     >
                         Editar
                     </a>
+                    <form style="display: inline;" asp-controller="Category" asp-action="Delete">
+                        <input type="hidden" name="id" id="id" value="@category.Id">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
                 </td>
             </tr>
         }
