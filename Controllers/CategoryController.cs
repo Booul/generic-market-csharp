@@ -42,5 +42,17 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/EditCategory");
             }
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id) {
+            if (id > 0) {
+                Category category = database.Categories.First(category => category.Id == id);
+                category.Status = false;
+
+                database.SaveChanges();
+            }
+
+            return RedirectToAction("Categories", "Management");
+        }
     }
 }
