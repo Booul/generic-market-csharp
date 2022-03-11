@@ -28,5 +28,19 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/NewCategory");
             }
         }
+
+        [HttpPost]
+        public IActionResult Update(CategoryDTO categoryDTO) {
+            if (ModelState.IsValid) {
+                Category category = database.Categories.First(category => category.Id == categoryDTO.Id);
+                category.Name = categoryDTO.Name;
+
+                database.SaveChanges();
+
+                return RedirectToAction("Categories", "Management");
+            } else {
+                return View("../Management/EditCategory");
+            }
+        }
     }
 }
