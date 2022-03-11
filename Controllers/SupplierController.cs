@@ -30,5 +30,21 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/NewSupplier");
             }
         }
+
+        [HttpPost]
+        public IActionResult Update(SupplierDTO supplierDTO) {
+            if (ModelState.IsValid) {
+                Supplier supplier = database.Suppliers.First(supplier => supplier.Id == supplierDTO.Id);
+                supplier.Name = supplierDTO.Name;
+                supplier.Email = supplierDTO.Email;
+                supplier.Phone = supplierDTO.Phone;
+
+                database.SaveChanges();
+
+                return RedirectToAction("Suppliers", "Management");
+            } else {
+                return View("../Management/EditSupplier");
+            }
+        }
     }
 }
