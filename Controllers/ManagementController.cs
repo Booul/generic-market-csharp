@@ -40,7 +40,9 @@ namespace generic_market_csharp.Controllers
         }
 
         public IActionResult Suppliers(){
-            return View();
+            List<Supplier> suppliers = database.Suppliers.ToList();
+
+            return View(suppliers);
         }
 
         public IActionResult NewSupplier() {
