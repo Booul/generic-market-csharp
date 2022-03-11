@@ -32,8 +32,13 @@
                 <td>@category.Id</td>
                 <td>@category.Name</td>
                 <td>
-                    <button class="btn btn-primary">Editar</button>
                     <button class="btn btn-danger">Deletar</button>
+                    <a
+                        class="btn btn-primary"
+                        href="/Management/EditCategory/@category.Id"
+                    >
+                        Editar
+                    </a>
                 </td>
             </tr>
         }
