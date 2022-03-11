@@ -49,6 +49,18 @@ namespace generic_market_csharp.Controllers
             return View();
         }
 
+        public IActionResult EditSupplier(int id) {
+            Supplier supplier = database.Suppliers.First(supplier => supplier.Id == id);
+
+            SupplierDTO supplierDTO = new SupplierDTO();
+            supplierDTO.Id = supplier.Id;
+            supplierDTO.Name = supplier.Name;
+            supplierDTO.Email = supplier.Email;
+            supplierDTO.Phone = supplier.Phone;
+
+            return View(supplierDTO);
+        }
+
         public IActionResult Products(){
             return View();
         }
