@@ -1,0 +1,16 @@
+@model generic_market_csharp.Models.DTO.CategoryDTO;
+
+@{
+    Layout = "_LayoutManagement";
+}
+
+<h2>Editar categoria</h2>
+<hr/>
+<form class="form-horizontal" asp-controller="Category" asp-action="Update" method="POST">
+    <input type="hidden" asp-for="Id">
+    <label asp-for="Name">Nome</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Nome da categoria"><br>
+    <span asp-validation-for="Name"></span>
+    <button class="btn btn-success">Atualizar</button>
+</form>
+<hr/>
