@@ -68,6 +68,7 @@ namespace generic_market_csharp.Controllers
             List<Product> products = database.Products
                 .Include(products => products.Category)
                 .Include(products => products.Supplier)
+                .Where(product => product.Status)
                 .ToList();
 
             return View(products);
@@ -83,7 +84,7 @@ namespace generic_market_csharp.Controllers
         public IActionResult EditProduct(int id) {
             ViewBag.Categories = database.Categories.ToList();
             ViewBag.Suppliers = database.Suppliers.ToList();
-            
+
             Product product = database.Products
                 .Include(products => products.Category)
                 .Include(products => products.Supplier)
