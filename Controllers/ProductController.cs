@@ -55,5 +55,17 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/EditProduct");
             }
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id) {
+            if (id > 0) {
+                Product product = database.Products.First(product => product.Id == id);
+                product.Status = false;
+
+                database.SaveChanges();
+            }
+
+            return RedirectToAction("Products", "Management");
+        }
     }
 }
