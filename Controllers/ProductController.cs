@@ -36,5 +36,24 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/NewProduct");
             }
         }
+
+        [HttpPost]
+        public IActionResult Update(ProductDTO productDTO) {
+            if (ModelState.IsValid) {
+                Product product = database.Products.First(supplier => supplier.Id == productDTO.Id);
+                product.Name = productDTO.Name;
+                product.Category = database.Categories.First(category => category.Id == productDTO.CategoryID);
+                product.Supplier = database.Suppliers.First(supplier => supplier.Id == productDTO.SupplierID);
+                product.PurchasePrice = productDTO.PurchasePrice;
+                product.SalePrice = productDTO.SalePrice;
+                product.MeasurementType = productDTO.MeasurementType;
+
+                database.SaveChanges();
+
+                return RedirectToAction("Products", "Management");
+            } else {
+                return View("../Management/EditProduct");
+            }
+        }
     }
 }
