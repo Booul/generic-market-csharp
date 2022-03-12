@@ -40,7 +40,7 @@ namespace generic_market_csharp.Controllers
         [HttpPost]
         public IActionResult Update(ProductDTO productDTO) {
             if (ModelState.IsValid) {
-                Product product = database.Products.First(supplier => supplier.Id == productDTO.Id);
+                Product product = database.Products.First(product => product.Id == productDTO.Id);
                 product.Name = productDTO.Name;
                 product.Category = database.Categories.First(category => category.Id == productDTO.CategoryID);
                 product.Supplier = database.Suppliers.First(supplier => supplier.Id == productDTO.SupplierID);
