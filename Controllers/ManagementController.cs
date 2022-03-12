@@ -79,5 +79,26 @@ namespace generic_market_csharp.Controllers
 
             return View();
         }
+
+        public IActionResult EditProduct(int id) {
+            ViewBag.Categories = database.Categories.ToList();
+            ViewBag.Suppliers = database.Suppliers.ToList();
+            
+            Product product = database.Products
+                .Include(products => products.Category)
+                .Include(products => products.Supplier)
+                .First(product => product.Id == id);
+
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.Id = product.Id;
+            productDTO.Name = product.Name;
+            productDTO.CategoryID = product.Category.Id;
+            productDTO.SupplierID = product.Supplier.Id;
+            productDTO.PurchasePrice = product.PurchasePrice;
+            productDTO.SalePrice = product.SalePrice;
+            productDTO.MeasurementType = product.MeasurementType;
+
+            return View(productDTO);
+        }
     }
 }
