@@ -7,25 +7,25 @@ namespace generic_market_csharp.Models.DTO
         [Required]
         public int Id {get; set;}
 
-        [Required(ErrorMessage = "Nome do produto é obrigatório.")]
-        [StringLength(100, ErrorMessage = "Nome do produto é muito grande.")]
-        [MinLength(2, ErrorMessage = "Nome do produto é muito pequeno.")]
+        [Required(ErrorMessage = "Product name is required.")]
+        [StringLength(100, ErrorMessage = "Product name is too long.")]
+        [MinLength(2, ErrorMessage = "Product name is too small.")]
         public string Name {get; set;}
 
-        [Required(ErrorMessage = "Categoria do produto é obrigatório.")]
+        [Required(ErrorMessage = "Product category is required.")]
         public int CategoryID {get; set;}
 
-        [Required(ErrorMessage = "Fornecedor do produto é obrigatório.")]
+        [Required(ErrorMessage = "Product supplier is required.")]
         public int SupplierID {get; set;}
 
-        [Required(ErrorMessage = "Preço de custo do produto é obrigatório.")]
+        [Required(ErrorMessage = "Purchase price of the product is required.")]
         public float PurchasePrice {get; set;}
 
-        [Required(ErrorMessage = "Preço de venda do produto é obrigatório.")]
+        [Required(ErrorMessage = "Sale price of the product is required.")]
         public float SalePrice {get; set;}
 
-        [Required(ErrorMessage = "Tipo de medição do produto é obrigatório.")]
-        [Range(1, 3, ErrorMessage = "Tipo de medição inválida.")]
+        [Required(ErrorMessage = "Product measurement type is mandatory.")]
+        [Range(1, 3, ErrorMessage = "Invalid measurement type.")]
         public int MeasurementType {get; set;}
     }
 }

@@ -4,10 +4,10 @@
     Layout = "_LayoutManagement";
 }
 
-<h2>Fornecedores</h2>
+<h2>Suppliers</h2>
 <hr/>
 <a asp-action="NewSupplier" asp-controller="Management" class="btn btn-success">
-    Criar novo fornecedor
+    Create new supplier
 </a>
 <hr/>
 
@@ -21,10 +21,10 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nome</th>
+            <th>Name</th>
             <th>Email</th>
-            <th>Telefone</th>
-            <th>Ações</th>
+            <th>Phone</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -40,11 +40,11 @@
                         class="btn btn-primary"
                         href="/Management/EditSupplier/@supplier.Id"
                     >
-                        Editar
+                        Edit
                     </a>
                     <form style="display: inline;" asp-controller="Supplier" asp-action="Delete">
                         <input type="hidden" name="id" id="id" value="@supplier.Id">
-                        <button class="btn btn-danger">Deletar</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>

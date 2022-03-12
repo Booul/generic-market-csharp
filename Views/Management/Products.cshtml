@@ -4,10 +4,10 @@
     Layout = "_LayoutManagement";
 }
 
-<h2>Produtos</h2>
+<h2>Products</h2>
 <hr/>
 <a asp-action="NewProduct" asp-controller="Management" class="btn btn-success">
-    Criar novo produto
+    Create new product
 </a>
 <hr/>
 
@@ -21,13 +21,13 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Fornecedor</th>
-            <th>Preço de custo</th>
-            <th>Preço de venda</th>
-            <th>Tipo de medição</th>
-            <th>Ações</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Supplier</th>
+            <th>Purchase price</th>
+            <th>Sale price</th>
+            <th>Measurement type</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -56,11 +56,11 @@
                         class="btn btn-primary"
                         href="/Management/EditProduct/@product.Id"
                     >
-                        Editar
+                        Edit
                     </a>
                     <form style="display: inline;" asp-controller="Product" asp-action="Delete">
                         <input type="hidden" name="id" id="id" value="@product.Id">
-                        <button class="btn btn-danger">Deletar</button>
+                        <button class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>

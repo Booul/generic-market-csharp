@@ -4,32 +4,32 @@
     Layout = "_LayoutManagement";
 }
 
-<h2>Novo produto</h2>
+<h2>New product</h2>
 <hr/>
 <form class="form-horizontal" asp-controller="Product" asp-action="Save" method="POST">
     <input type="hidden" asp-for="Id" value="0">
-    <label asp-for="Name">Nome</label>
-    <input type="text" asp-for="Name" class="form-control" placeholder="Nome do produto">
+    <label asp-for="Name">Name</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Product name">
     <span asp-validation-for="Name"></span><br>
-    <label asp-for="CategoryID">Categoria</label>
+    <label asp-for="CategoryID">Category</label>
     <select class="form-control" asp-for="CategoryID" asp-items='@(new SelectList(@ViewBag.Categories, "Id", "Name"))'></select>
     <span asp-validation-for="CategoryID"></span><br>
-    <label asp-for="SupplierID">Fornecedor</label>
+    <label asp-for="SupplierID">Supplier</label>
     <select class="form-control" asp-for="SupplierID" asp-items='@(new SelectList(@ViewBag.Suppliers, "Id", "Name"))'></select>
     <span asp-validation-for="SupplierID"></span><br>
-    <label asp-for="PurchasePrice">Preço de compra</label>
+    <label asp-for="PurchasePrice">Purchase price</label>
     <input type="number" step="any" asp-for="PurchasePrice" class="form-control" placeholder="0.00">
     <span asp-validation-for="PurchasePrice"></span><br>
-    <label asp-for="SalePrice">Preço de venda</label>
+    <label asp-for="SalePrice">Sale price</label>
     <input type="number" step="any" asp-for="SalePrice" class="form-control" placeholder="0.00">
     <span asp-validation-for="SalePrice"></span><br>
-    <label asp-for="MeasurementType">Tipo de medição</label>
+    <label asp-for="MeasurementType">Measurement type</label>
     <select class="form-control" asp-for="MeasurementType">
         <option value="1">Litro</option>
         <option value="2">Quilo</option>
         <option value="3">Unidade</option>
     </select>
     <span asp-validation-for="MeasurementType"></span><br>
-    <button class="btn btn-success">Cadastrar</button>
+    <button class="btn btn-success">Register </button>
 </form>
 <hr/>

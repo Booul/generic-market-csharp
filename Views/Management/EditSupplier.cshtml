@@ -4,19 +4,19 @@
     Layout = "_LayoutManagement";
 }
 
-<h2>Editar fornecedor</h2>
+<h2>Edit supplier</h2>
 <hr/>
 <form class="form-horizontal" asp-controller="Supplier" asp-action="Update" method="POST">
     <input type="hidden" asp-for="Id">
-    <label asp-for="Name">Nome</label>
-    <input type="text" asp-for="Name" class="form-control" placeholder="Nome do fornecedor">
+    <label asp-for="Name">Name</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Supplier name">
     <span asp-validation-for="Name"></span><br>
     <label asp-for="Email">Email</label>
-    <input type="email" asp-for="Email" class="form-control" placeholder="E-mail do fornecedor">
+    <input type="email" asp-for="Email" class="form-control" placeholder="Supplier email">
     <span asp-validation-for="Email"></span><br>
     <label asp-for="Phone">Phone</label>
     <input type="text" asp-for="Phone" class="form-control" placeholder="00 0 0000-0000">
     <span asp-validation-for="Phone"></span><br>
-    <button class="btn btn-success">Atualizar</button>
+    <button class="btn btn-success">Update</button>
 </form>
 <hr/>

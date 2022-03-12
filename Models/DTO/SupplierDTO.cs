@@ -7,17 +7,17 @@ namespace generic_market_csharp.Models.DTO
         [Required]
         public int Id {get; set;}
 
-        [Required(ErrorMessage = "Nome do fornecedor é obrigatório.")]
-        [StringLength(100, ErrorMessage = "Nome do fornecedor é muito grande.")]
-        [MinLength(2, ErrorMessage = "Nome do fornecedor é muito pequeno.")]
+        [Required(ErrorMessage = "Supplier name is required.")]
+        [StringLength(100, ErrorMessage = "Supplier name is too long.")]
+        [MinLength(2, ErrorMessage = "Supplier name is too small.")]
         public string Name {get; set;}
 
-        [Required(ErrorMessage = "E-mail do fornecedor é obrigatório.")]
+        [Required(ErrorMessage = "Supplier's email is mandatory.")]
         [EmailAddress(ErrorMessage = "Email inválido.")]
         public string Email {get; set;}
 
-        [Required(ErrorMessage = "Telefone do fornecedor é obrigatório.")]
-        [Phone(ErrorMessage = "Telefone inválido.")]
+        [Required(ErrorMessage = "Supplier's phone number is required.")]
+        [Phone(ErrorMessage = "Invalid phone.")]
         public string Phone {get; set;}
     }
 }
