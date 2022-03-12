@@ -2,6 +2,7 @@ using generic_market_csharp.Data;
 using generic_market_csharp.Models;
 using generic_market_csharp.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace generic_market_csharp.Controllers
 {
@@ -63,8 +64,13 @@ namespace generic_market_csharp.Controllers
             return View(supplierDTO);
         }
 
-        public IActionResult Products(){
-            return View();
+        public IActionResult Products() {
+            List<Product> products = database.Products
+                .Include(products => products.Category)
+                .Include(products => products.Supplier)
+                .ToList();
+
+            return View(products);
         }
 
         public IActionResult NewProduct() {
