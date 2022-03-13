@@ -103,7 +103,13 @@ namespace generic_market_csharp.Controllers
         }
 
         public IActionResult DiscountedSales() {
-            return View();
+            List<DiscountedSale> discountedSales =
+                database.DiscountedSales
+                .Include(discountedSales => discountedSales.Product)
+                .Where(discountedSales => discountedSales.Status)
+                .ToList();
+
+            return View(discountedSales);
         }
 
         public IActionResult NewDiscountedSale() {
