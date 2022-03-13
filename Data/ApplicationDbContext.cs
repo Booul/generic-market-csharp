@@ -10,7 +10,7 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Category> Categories {get; set;}
     public DbSet<Supplier> Suppliers {get; set;}
     public DbSet<Product> Products {get; set;}
-    public DbSet<Promotion> Promotions {get; set;}
+    public DbSet<DiscountedSale> DiscountedSales {get; set;}
     public DbSet<Stock> Stocks {get; set;}
     public DbSet<Output> Outputs {get; set;}
     public DbSet<Sale> Sales {get; set;}

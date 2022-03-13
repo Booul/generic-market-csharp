@@ -102,11 +102,11 @@ namespace generic_market_csharp.Controllers
             return View(productDTO);
         }
 
-        public IActionResult Promotions() {
+        public IActionResult DiscountedSales() {
             return View();
         }
 
-        public IActionResult NewPromotion() {
+        public IActionResult NewDiscountedSale() {
             ViewBag.Products = database.Products.ToList();
 
             return View();

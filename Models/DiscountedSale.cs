@@ -1,6 +1,6 @@
 namespace generic_market_csharp.Models
 {
-    public class Promotion
+    public class DiscountedSale 
     {
         public int Id {get; set;}
         public string Name {get; set;}
