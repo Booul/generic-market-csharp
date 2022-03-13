@@ -1,0 +1,22 @@
+@model generic_market_csharp.Models.DTO.DiscountedSaleDTO;
+
+@{
+    Layout = "_LayoutManagement";
+}
+
+<h2>Edit discounted sales</h2>
+<hr/>
+<form class="form-horizontal" asp-controller="DiscountedSale" asp-action="Update" method="POST">
+    <input type="hidden" asp-for="Id">
+    <label asp-for="Name">Name</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Discounted sale name">
+    <span asp-validation-for="Name"></span><br>
+    <label asp-for="ProductId">Product</label>
+    <select class="form-control" asp-for="ProductId" asp-items='@(new SelectList(@ViewBag.Products, "Id", "Name"))'></select>
+    <span asp-validation-for="ProductId"></span><br>
+    <label asp-for="Percentage">Percentage</label>
+    <input type="number" min="0" max="100" asp-for="Percentage" class="form-control" placeholder="0%">
+    <span asp-validation-for="Percentage"></span><br>
+    <button class="btn btn-success">Update</button>
+</form>
+<hr/>
