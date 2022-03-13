@@ -48,5 +48,17 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/EditDiscountedSale");
             }
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id) {
+            if (id > 0) {
+                DiscountedSale discountedSale = database.DiscountedSales.First(discountedSale => discountedSale.Id == id);
+                discountedSale.Status = false;
+
+                database.SaveChanges();
+            }
+
+            return RedirectToAction("DiscountedSales", "Management");
+        }
     }
 }
