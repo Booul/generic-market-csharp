@@ -117,5 +117,21 @@ namespace generic_market_csharp.Controllers
 
             return View();
         }
+
+        public IActionResult EditDiscountedSale(int id) {
+            ViewBag.Products = database.Products.ToList();
+
+            DiscountedSale discountedSale = database.DiscountedSales
+                .Include(discountedSale => discountedSale.Product)
+                .First(product => product.Id == id);
+
+            DiscountedSaleDTO discountedSaleDTO = new DiscountedSaleDTO();
+            discountedSaleDTO.Id = discountedSale.Id;
+            discountedSaleDTO.Name = discountedSale.Name;
+            discountedSaleDTO.ProductId = discountedSale.Product.Id;
+            discountedSaleDTO.Percentage = discountedSale.Percentage;
+
+            return View(discountedSaleDTO);
+        }
     }
 }
