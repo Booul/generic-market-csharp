@@ -32,5 +32,21 @@ namespace generic_market_csharp.Controllers
                 return View("../Management/NewDiscountedSale");
             }
         }
+
+        [HttpPost]
+        public IActionResult Update(DiscountedSaleDTO discountedSaleDTO) {
+            if (ModelState.IsValid) {
+                DiscountedSale discountedSale = database.DiscountedSales.First(discountedSale => discountedSale.Id == discountedSaleDTO.Id);
+                discountedSale.Name = discountedSaleDTO.Name;
+                discountedSale.Product = database.Products.First(discountedSale => discountedSale.Id == discountedSaleDTO.ProductId);
+                discountedSale.Percentage = discountedSaleDTO.Percentage;
+
+                database.SaveChanges();
+
+                return RedirectToAction("DiscountedSales", "Management");
+            } else {
+                return View("../Management/EditDiscountedSale");
+            }
+        }
     }
 }
