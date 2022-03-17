@@ -4,25 +4,23 @@ using generic_market_csharp.Models;
 
 namespace generic_market_csharp.Controllers;
 
-public class HomeController : Controller
+[Route("")]
+public class CashDeskController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<CashDeskController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public CashDeskController(ILogger<CashDeskController> logger)
     {
         _logger = logger;
     }
 
+    [Route("")]
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
+    [Route("Error")]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
