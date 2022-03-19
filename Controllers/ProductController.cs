@@ -2,6 +2,7 @@ using generic_market_csharp.Models.DTO;
 using generic_market_csharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using generic_market_csharp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace generic_market_csharp.Controllers
 {
@@ -11,6 +12,30 @@ namespace generic_market_csharp.Controllers
 
         public ProductController(ApplicationDbContext database) {
             this.database = database;
+        }
+
+        [HttpPost]
+        public IActionResult Retrieve(int id) {
+            if (id > 0) {
+                Product? product =
+                    database.Products.
+                        Include(product => product.Category).
+                        Include(product => product.Supplier).
+                        Where(product => !product.Status).
+                        SingleOrDefault(product => product.Id == id);
+
+                if (product != null) {
+                    Response.StatusCode = 200;
+                    return Json(product);
+                }
+                else {
+                    Response.StatusCode = 404;
+                    return Json(null);
+                }
+            }
+
+            Response.StatusCode = 500;
+            return Json(null);
         }
 
         [HttpPost]
