@@ -21,7 +21,7 @@ namespace generic_market_csharp.Controllers
                     database.Products.
                         Include(product => product.Category).
                         Include(product => product.Supplier).
-                        Where(product => !product.Status).
+                        Where(product => product.Status).
                         SingleOrDefault(product => product.Id == id);
 
                 if (product != null) {
