@@ -67,7 +67,7 @@ $("#search-product-btn").click(function () {
         fillForm(product);
     }).fail(function () {
         product = null;
-            alert("An error has occurred. Please contact support.");
+        alert("An error has occurred. Please contact support.");
     });
 });
 
