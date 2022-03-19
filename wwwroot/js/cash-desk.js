@@ -32,8 +32,8 @@ function addProductInTable (newProduct, count) {
             <td>${newProduct.id}</td>
             <td>${newProduct.name}</td>
             <td>${count} ${newProduct.measurementType}</td>
-            <td>R$ ${newProduct.salePrice}</td>
-            <td>R$ ${newProduct.salePrice * count}</td>
+            <td>$ ${newProduct.salePrice}</td>
+            <td>$ ${newProduct.salePrice * count}</td>
             <td><button class='btn btn-danger'>Remove</button></td>
         </tr>
     `);
