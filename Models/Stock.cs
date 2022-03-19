@@ -4,6 +4,7 @@ namespace generic_market_csharp.Models
     {
         public int Id {get; set;}
         public Product Product {get; set;}
+        public int ProductId {get; set;}
         public float Amount {get; set;}
     }
 }

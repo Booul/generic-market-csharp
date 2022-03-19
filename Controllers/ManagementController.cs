@@ -133,5 +133,17 @@ namespace generic_market_csharp.Controllers
 
             return View(discountedSaleDTO);
         }
+
+        public IActionResult Stocks(){
+            List<Stock> stocks = database.Stocks.Include(stock => stock.Product).ToList();
+
+            return View(stocks);
+        }
+
+        public IActionResult NewStock() {
+            ViewBag.Products = database.Products.ToList();
+            
+            return View();
+        }
     }
 }

@@ -1,0 +1,49 @@
+@model IEnumerable<generic_market_csharp.Models.Stock>
+
+@{
+    Layout = "_LayoutManagement";
+}
+
+<h2>Stocks</h2>
+<hr/>
+<a asp-action="NewStock" asp-controller="Management" class="btn btn-success">
+    Create new stock
+</a>
+<hr/>
+
+<script>
+    $(document).ready(function () {
+        $('#table-stocks').DataTable({
+            "info": false
+        });
+    });
+</script>
+
+<table id="table-stocks" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr>
+                <td>@stock.Id</td>
+                <td>@stock.Product.Name</td>
+                <td>@stock.Amount</td>
+                <td>
+                    <a
+                        class="btn btn-primary"
+                        href="/Management/EditProduct/@stock.Id"
+                    >
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
