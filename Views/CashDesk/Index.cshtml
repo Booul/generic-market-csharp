@@ -84,12 +84,48 @@
             <hr>
             <div class="col-sm-4"></div>
             <div class="col-sm-4 text-center">
-                    <button type="button" class="btn btn-success" style="width: 95px;">Checkout</button>
-                    <button type="button" class="btn btn-danger" style="width: 95px;">Cancel</button>
+                <button type="button" class="btn btn-success" style="width: 95px;">Checkout</button>
+                <button type="button" class="btn btn-danger" style="width: 95px;">Cancel</button>
             </div>
             <div class="col-sm-4"></div>
         </div>
         <hr>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="sale-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Checkout</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <h2>Total: $ 65.90 </h2>
+            <hr>
+            <p>Amount paid:</p>
+            <input type="number" placeholder="0.00" class="form-control">
+            <p>Change:</p>
+            <input type="number" placeholder="0.00" disabled class="form-control">  
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <div class="posvenda">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+            <div class="prevenda">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Checkout</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+        </div>
+    </div>
     </div>
 
 </body>
