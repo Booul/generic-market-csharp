@@ -26,6 +26,13 @@ namespace generic_market_csharp.Controllers
 
                 if (product != null) {
                     Response.StatusCode = 200;
+
+                    Stock? stock = database.Stocks.SingleOrDefault(stock => stock.Product.Id == product.Id);
+                    if (stock == null) {
+                        Response.StatusCode = 404;
+                        product = null;
+                    }
+
                     return Json(product);
                 }
                 else {
