@@ -106,21 +106,21 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-            <h4>Total: $ 65.90 </h3>
+            <h4>Total: $ <span id="total-sum">65.90</span></h3>
             <hr>
             <p>Amount paid:</p>
-            <input type="number" placeholder="0.00" class="form-control"><br>
+            <input type="number" placeholder="0.00" class="form-control" id="amount-paid"><br>
             <p>Change:</p>
-            <input type="number" placeholder="0.00" disabled class="form-control">  
+            <input type="number" placeholder="0.00" step="0.01" disabled class="form-control" id="change">  
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
-            <div class="posvenda">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <div id="after-sale">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="modal-close-btn">Close</button>
             </div>
-            <div class="prevenda">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Checkout</button>
+            <div id="before-sale">
+                <button type="button" class="btn btn-success" id="checkout">Checkout</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div>

@@ -5,6 +5,15 @@ var uriRetrieveProduct = "/Product/Retrieve/";
 
 var sales = [];
 
+var totalSum = 0.00;
+
+/* ### Start  ### */
+
+$("#before-sale").show();
+$("#after-sale").hide();
+
+UpdateTotalSum();
+
 /* ### Functions  ### */
 
 function fillForm (productData) {
@@ -22,18 +31,36 @@ function resetForm () {
     $("#product-count").val("");
 }
 
-function addProductInTable (newProduct, count) {
+function UpdateTotalSum () {
+    $("#total-sum").html(totalSum);
+}
+
+function resetModal () {
+    $("#before-sale").show();
+    $("#after-sale").hide();
+    $("#amount-paid").prop("disabled", false);
+    $("#change").val("");
+    $("#amount-paid").val("");
+}
+
+function addProductInTable (newProduct, amount) {
     var productTemp = {};
     Object.assign(productTemp, newProduct);
-    sales.push(productTemp);
+
+    var sale = {product: productTemp, amount: amount, subtotal: newProduct.salePrice * amount};
+
+    totalSum += sale.subtotal;
+    UpdateTotalSum();
+
+    sales.push(sale);
     
     $("#products-table").append(`
         <tr>
             <td>${newProduct.id}</td>
             <td>${newProduct.name}</td>
-            <td>${count} ${newProduct.measurementType}</td>
+            <td>${amount} ${newProduct.measurementType}</td>
             <td>$ ${newProduct.salePrice}</td>
-            <td>$ ${newProduct.salePrice * count}</td>
+            <td>$ ${newProduct.salePrice * amount}</td>
             <td><button class='btn btn-danger'>Remove</button></td>
         </tr>
     `);
@@ -73,10 +100,41 @@ $("#search-product-btn").click(function () {
 
 $("#product-form").on("submit", function (event) {
     event.preventDefault();
-    var count = $("#product-count").val();
+    var amount = $("#product-count").val();
 
-    addProductInTable(product, count);
+    addProductInTable(product, amount);
 
-    var count = 0;
+    var amount = 0;
     resetForm();
+});
+
+$("#checkout").click(function () {
+    if (totalSum <= 0) {
+        alert("Invalid purchase, no products added.");
+        return;
+    }
+
+    var amountPaid = $("#amount-paid").val();
+    if (!isNaN(amountPaid)) {
+        _amountPaid = parseFloat(amountPaid);
+
+        if (_amountPaid >= totalSum) {
+            $("#before-sale").hide();
+            $("#after-sale").show();
+            $("#amount-paid").prop("disabled", true);
+
+            var change = _amountPaid - totalSum;
+            $("#change").val(change);
+        } else {
+            alert ("Valor pago é insuficiente.")
+            return;
+        }
+    } else {
+        alert("Valor pago inválido");
+        return;
+    }
+});
+
+$("#modal-close-btn").click(function () {
+    resetModal();
 });
