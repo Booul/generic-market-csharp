@@ -27,6 +27,13 @@ namespace generic_market_csharp.Controllers
                 if (product != null) {
                     Response.StatusCode = 200;
 
+                    DiscountedSale? discountedSale = database.DiscountedSales.
+                        Where(discountedSale => discountedSale.Status).
+                        FirstOrDefault(discountedSale => discountedSale.Product.Id == product.Id);
+
+                    if (discountedSale != null)
+                        product.SalePrice -= (product.SalePrice * discountedSale.Percentage);
+
                     Stock? stock = database.Stocks.SingleOrDefault(stock => stock.Product.Id == product.Id);
                     if (stock == null) {
                         Response.StatusCode = 404;
