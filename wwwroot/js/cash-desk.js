@@ -1,9 +1,12 @@
 /* ### Declaration of Variables  ### */
 
 var product = null;
-var uriRetrieveProduct = "/Product/Retrieve/";
 
-var sales = [];
+var uriRetrieveProduct = "/Product/Retrieve/";
+var uriSaveSale = "/Sale/Save/";
+var uriSaveRangeOutput = "/Output/SaveRange/";
+
+var outputs = [];
 
 var totalSum = 0.00;
 
@@ -47,12 +50,12 @@ function addProductInTable (newProduct, amount) {
     var productTemp = {};
     Object.assign(productTemp, newProduct);
 
-    var sale = {product: productTemp, amount: amount, subtotal: newProduct.salePrice * amount};
+    var sale = {product: productTemp, amount: amount, salePrice: newProduct.salePrice * amount};
 
-    totalSum += sale.subtotal;
+    totalSum += sale.salePrice;
     UpdateTotalSum();
 
-    sales.push(sale);
+    outputs.push(sale);
     
     $("#products-table").append(`
         <tr>
@@ -80,6 +83,43 @@ function getMeasurementType (measurementType) {
         default:
             return "unit(s)";
     }
+}
+
+function saveSale(sale) {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            type: "POST",
+            url: uriSaveSale,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(sale),
+            success: function (data) {
+                sale.id = data.id;
+                resolve(sale);
+            },
+            error: function(err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+function saveOutputs(outputs) {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            type: "POST",
+            url: uriSaveRangeOutput,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(outputs),
+            success: function (data) {
+                resolve(data);
+            },
+            error: function(err) {
+                reject(err);
+            }
+        });
+    });
 }
 
 /* ### Ajax  ### */
@@ -125,12 +165,37 @@ $("#checkout").click(function () {
 
             var change = _amountPaid - totalSum;
             $("#change").val(change);
+   
+            var sale = {total: totalSum, amountPaid: _amountPaid, change: change};
+
+            saveSale(sale).then(function (data) {
+                console.log("Successful request.");
+                console.log(data);
+
+                outputs.forEach (output => {
+                    output.productId = output.product.id;
+                    output.saleId = data.id;
+    
+                    delete output.product;
+                });
+
+                saveOutputs(outputs).then(function (data) {
+                    console.log("Successful request.");
+                    console.log(data);
+                }).catch(function(err) {
+                    console.log("Failed request.");
+                    console.error(err);
+                });   
+            }).catch(function(err) {
+                console.log("Failed request.");
+                console.error(err);
+            });
         } else {
-            alert ("Valor pago é insuficiente.")
+            alert ("Amount paid is insufficient.")
             return;
         }
     } else {
-        alert("Valor pago inválido");
+        alert("Invalid amount paid.");
         return;
     }
 });
