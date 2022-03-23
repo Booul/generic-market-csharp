@@ -145,5 +145,11 @@ namespace generic_market_csharp.Controllers
             
             return View();
         }
+
+        public IActionResult Sales() {
+            List<Sale> sales = database.Sales.ToList();
+
+            return View(sales);
+        }
     }
 }

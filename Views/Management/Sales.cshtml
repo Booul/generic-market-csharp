@@ -1,0 +1,40 @@
+@model IEnumerable<generic_market_csharp.Models.Sale>
+
+@{
+    Layout = "_LayoutManagement";
+}
+
+<h2>Sales</h2>
+<hr/>
+
+<script>
+    $(document).ready(function () {
+        $('#table-sales').DataTable({
+            "info": false
+        });
+    });
+</script>
+
+<table id="table-sales" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Amount paid</th>
+            <th>Change</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@sale.Id</td>
+                <td>@sale.Date</td>
+                <td>$ @sale.Total</td>
+                <td>$ @sale.AmountPaid</td>
+                <td>$ @sale.Change</td>
+            </tr>
+        }
+    </tbody>
+</table>
