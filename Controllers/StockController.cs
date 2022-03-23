@@ -3,9 +3,11 @@ using generic_market_csharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using generic_market_csharp.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace generic_market_csharp.Controllers
 {
+    [Authorize]
     public class StockController: Controller
     {
         private readonly ApplicationDbContext database;

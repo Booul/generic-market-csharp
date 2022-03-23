@@ -1,11 +1,13 @@
 using generic_market_csharp.Data;
 using generic_market_csharp.Models;
 using generic_market_csharp.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace generic_market_csharp.Controllers
 {
+    [Authorize]
     public class ManagementController: Controller
     {
         private readonly ApplicationDbContext database;

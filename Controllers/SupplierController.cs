@@ -2,9 +2,11 @@ using generic_market_csharp.Models.DTO;
 using generic_market_csharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using generic_market_csharp.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace generic_market_csharp.Controllers
 {
+    [Authorize]
     public class SupplierController: Controller
     {
         private readonly ApplicationDbContext database;

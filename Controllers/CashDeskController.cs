@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using generic_market_csharp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace generic_market_csharp.Controllers;
 
+[Authorize]
 [Route("")]
 public class CashDeskController : Controller
 {
