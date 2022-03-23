@@ -69,3 +69,38 @@
     </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+
+<canvas class="line-chart"></canvas>
+
+<script>
+    var uriRetrieveSalesReport = "/Management/SalesReport/";
+
+    var labels = [];
+    var dataset = [];
+
+    $.post(uriRetrieveSalesReport, function (data, status) {
+        if (data.length > 0) {
+
+            for (var i = 0; i < data.length; i++) {
+                labels.push(data[i].date);
+                dataset.push(data[i].total);
+            }
+
+            var canvas = document.getElementsByClassName("line-chart");
+            var graphic = new Chart(canvas, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Total",
+                        data: dataset,
+                        borderWidth: 12,
+                        borderColor: "#696969"
+                    }]
+                }
+            });
+        }
+    });
+</script>

@@ -151,5 +151,12 @@ namespace generic_market_csharp.Controllers
 
             return View(sales);
         }
+
+        [HttpPost]
+        public IActionResult SalesReport() {
+            List<Sale> sales = database.Sales.ToList();
+
+            return Ok(sales);
+        }
     }
 }
